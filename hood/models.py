@@ -151,6 +151,7 @@ class Business(models.Model):
     class Meta:
         verbose_name_plural = 'Businesses'
 
+
 class Post(models.Model):
     title = models.CharField(max_length=120, null=True, verbose_name='Post Title')
     description = models.TextField(null=True, verbose_name='Post Description')
