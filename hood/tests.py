@@ -32,6 +32,7 @@ class TestNeighbourhood(TestCase):
         new_hood=self.new_neigbourhood
         new_hood.delete_neigbourhood()
         posts=NeighbourHood.get_neighbourhoods()
+     
         self.assertTrue(len(posts)==0)
 
 class TestBusiness(TestCase):
