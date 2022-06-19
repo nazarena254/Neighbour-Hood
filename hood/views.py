@@ -112,6 +112,7 @@ def Login(request):
         
     return render(request, 'Login.html')
 
+
 @login_required(login_url='Login')
 def Logout(request):
     logout(request)
