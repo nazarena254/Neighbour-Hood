@@ -117,6 +117,7 @@ class AddBussinessForm(forms.Form):
         super(AddBussinessForm, self).__init__(*args, **kwargs)
         self.fields['neighbourhood'].choices = [(e.id, e.title) for e in NeighbourHood.objects.all()]
 
+
 class AddNeighbourhoodForm(forms.ModelForm):
     title = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Title','class': 'form-control mb-4'}))
     description = forms.CharField(required=True, widget=forms.Textarea(attrs={'placeholder': 'Description','class': 'form-control mb-4','rows': 3,}))
