@@ -226,6 +226,7 @@ def AddBusiness(request, username):
         form = AddBussinessForm()
     return render(request, 'AddBusiness.html', {'form':form})
 
+
 @login_required(login_url='Login')
 def AddNeighbourhood(request, username):
     profile = User.objects.get(username=username)
