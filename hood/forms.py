@@ -88,6 +88,7 @@ class UpdateProfileForm(forms.ModelForm):
         model = Profile
         fields = ['profile_picture', 'bio', 'national_id', 'neighbourhood']
 
+
 class PasswordChangeForm(SetPasswordForm):
     old_password = forms.CharField(required=True,widget=forms.PasswordInput(attrs={'class': 'form-control mb-4','type': 'password','name': 'password1','placeholder': 'Old Password',}))
     new_password1 = forms.CharField(required=True,widget=forms.PasswordInput(attrs={'class': 'form-control mb-4','type': 'password','name': 'password1','placeholder': 'New Password',}))
