@@ -70,6 +70,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'neighbour.wsgi.application'
 
+cloudinary.config( 
+      cloud_name = config('CLOUDINARY_NAME'), 
+      api_key = config('CLOUDINARY_API_KEY'), 
+      api_secret = config('CLOUDINARY_API_SECRET') 
+    ) 
+    
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Email configurations remember to install python-decouple
 # We use the config function to connect to the environment variables
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -77,6 +85,7 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
