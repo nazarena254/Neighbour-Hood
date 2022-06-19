@@ -100,12 +100,12 @@ class NeighbourHood(models.Model):
     class Meta:
         verbose_name_plural = 'NeighbourHoods'
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='User')
     bio = models.TextField(max_length=254, blank=True, verbose_name='Bio')
     national_id = models.CharField(max_length=10, blank=True, verbose_name='National ID')
     profile_picture = CloudinaryField('profile_picture')
-    # profile_picture = models.ImageField(upload_to='Profile-Pics', verbose_name='Profile-Pics')
     neighbourHood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, null=True, blank=True, verbose_name='NeighbourHood')
     email_confirmed = models.BooleanField(default=False, verbose_name='Is Confirmed?')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
