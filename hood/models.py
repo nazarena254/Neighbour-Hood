@@ -167,6 +167,7 @@ class Post(models.Model):
     class Meta:
         verbose_name_plural = 'Posts'
 
+
 class Membership(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name='User')
     neighbourhood_membership = models.ForeignKey(NeighbourHood, related_name='neighbourhood_member', on_delete=models.CASCADE, verbose_name='NeighbourHood')
