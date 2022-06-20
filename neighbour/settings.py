@@ -75,8 +75,7 @@ cloudinary.config(
       api_key = config('CLOUDINARY_API_KEY'), 
       api_secret = config('CLOUDINARY_API_SECRET') 
     ) 
- 
-    
+   
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Email configurations remember to install python-decouple
@@ -98,7 +97,6 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
