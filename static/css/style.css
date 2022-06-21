@@ -1,0 +1,71 @@
+body{
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}  
+#hood{
+    margin-top: 3vw;
+    width: 90%;
+    margin-left:5vw ;
+
+}
+.card{
+  margin-bottom: 1vw;
+  width: 30%;
+  padding-top: 1vw;
+  border-radius: 2vw;
+  background-color: white;
+}
+#nav{
+    background-color:   
+#132263;
+    padding: 0.5vw;
+    padding-left: 3vw;
+    color:black;
+}
+.dropdown-menu a{
+    color: #132263;
+    margin-left: 3vw;
+}
+.navbar-form input{
+    width: 10vw;
+}
+
+.but a{
+    background-color: #d1911d;
+    width: 10vw;
+    padding: 1vw;
+    border-radius: 2vw;
+    color: white;
+    margin: 2vw;
+}
+.but{
+    margin-top: 2vw;
+}
+.card{
+    height: 30vw;
+}
+.card img{
+    height: 20vw;
+}
+
+#update .card{
+    height: 40vw;
+    margin-left: 3vw;
+    padding: 1vw;
+
+}
+#biz1 .card{
+    height: 30vw;
+    margin-left: 3vw;
+    padding: 1vw;
+    margin-bottom: 5vw;
+
+}
+.card-body input title{
+    display: none;
+}
+.link a{
+  justify-content: space-around;
+  text-align: center;
+  margin-left: 15vw;
+}

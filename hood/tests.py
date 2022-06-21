@@ -2,60 +2,62 @@ from django.test import TestCase
 
 # Create your tests here.
 from django.test import TestCase
-from .models import NeighbourHood, Business, Profile
-from django.contrib.auth.models import User
-
-user = User.objects.get(id=1)
-profile = Profile.objects.get(id=1)
-
+from .models import Comment, Business,Profile,Post
 # Create your tests here.
-class TestNeighbourhood(TestCase):
+class CommentTestCase(TestCase):
+    '''
+    setup
+    '''
     def setUp(self):
-        self.new_neigbourhood=NeighbourHood(title = "Title", location="Langata", county='Naitobi', neighbourhood_logo="default.jpg", neighbourhood_admin=user)
-
+        self.comment = Comment(name='lovely')
+    '''
+    test instance of comment
+    '''
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_neigbourhood,NeighbourHood))
+        self.assertTrue(isinstance(self.comment,Comment))
+        '''
+        test for save instance of comment
+        '''
+    def test_save_comment(self):
+        self.comment.save_comment()
+        name = Comment.objects.all()
+        self.assertTrue(len(name)>0)
 
-    def test_save_image(self):
-        new_hood=self.new_neigbourhood
-        new_hood.create_neigbourhood()
-        posts=NeighbourHood.get_neighbourhoods()
-        self.assertTrue(len(posts)>0)
 
-    def update_image(self):
-        new_hood=self.new_neigbourhood
-        new_hood.update_neighbourhood()
-        posts=NeighbourHood.get_neighbourhoods()
-        self.assertTrue(len(posts)==0)
-
-    def test_delete_image(self):
-        new_hood=self.new_neigbourhood
-        new_hood.delete_neigbourhood()
-        posts=NeighbourHood.get_neighbourhoods()
-     
-        self.assertTrue(len(posts)==0)
-
-class TestBusiness(TestCase):
+class profileTestCLass(TestCase):
+    '''
+    setup self instance of profile
+    '''
     def setUp(self):
-        self.new_business=Business(name = "Title", description="Langata", email='Naitobi', neighbourhood="default.jpg", owner=profile)
-
+        self.prof = Profile(Bio='Live the moment')
+    
+    ''' 
+    test instance of profile
+    '''
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_business,Business))
+        self.assertTrue(isinstance(self.prof,Profile))
 
-    def test_save_image(self):
-        new_biz=self.new_business
-        new_biz.create_business()
-        posts=Business.get_businesses()
-        self.assertTrue(len(posts)>0)
+    def test_save_profile(self):
+        self.prof.save_profile()
+        bio = Profile.objects.all()
+        self.assertTrue(len(bio)>0)
 
-    def update_image(self):
-        new_biz=self.new_business
-        new_biz.update_business()
-        posts=Business.get_businesses()
-        self.assertTrue(len(posts)==0)
-
-    def test_delete_image(self):
-        new_biz=self.new_business
-        new_biz.delete_business()
-        posts=Business.get_businesses()
-        self.assertTrue(len(posts)==0)
+class BusinessTestCase(TestCase):
+    '''
+    setup
+    '''
+    def setUp(self):
+        
+        self.business = Business(name='soko',image='soko.jpeg',pub_date='12,Oct,2018',user='1',NeighborHood='1')
+    '''
+    test instance of business
+    '''
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business,Business))
+        '''
+        test for save instance of business
+        '''
+    def test_save_business(self):
+        self.business.save_business()
+        name = Business.objects.all()
+        self.assertTrue(len(name)>0)

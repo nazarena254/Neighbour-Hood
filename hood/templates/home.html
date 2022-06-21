@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super }}
+<!-- <div class="head">
+    <h5>Are you new in a neighborhood? <br>Looking to know where to get various services? </h5>
+    <div class="but">
+        <div class="col-md-2" style="text-align: center; padding-top: 1vw; font-size: 1vw; color:black; display: flex;justify-content: space-around;">
+            <a  style="color:white;"href="{% url 'add_hood' %}" >Add Hood</a>
+        </div>  
+       
+    </div>
+   
+</div> -->
+<div class="container-fluid" id="pro">
+
+    <div id="hood"  class="row">
+
+        
+        {% for hood in hoods%}
+        <div class="card col-md-4" id="hoody">
+            <img class="card-img-top img-responsive"  src="{{hood.view.url}}" alt="Card image cap" />
+            <div class="card-body">
+
+                <p><strong>{{hood.name}}</strong> {{hood.location}}</p>
+                <a href="{% url 'join' neighborhood_id=hood.id %}"class="btn btn-outline-primary">Join Neighborhood</a>
+                <p class="card-text" style="font-size:14px;"><small class="text-muted">Since
+                        {{hood.pub_date|timesince}}</small></p>
+
+            </div>
+        </div>
+        {% endfor %}
+        <!-- <div class="col-md-2"></div> -->
+
+    </div>
+    {% endblock %}

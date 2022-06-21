@@ -7,10 +7,10 @@ Django web application where users will be creating, searching, deleting and edi
 Nazarena Wambura.</br>
 [Github Account](https://github.com/nazarena254)
 
-<!-- ### Homepage
-![nazawwards](./awwardsapp/static/images/awwards.png)
-### Admin panel
-![nazawwards](./awwardsapp/static/images/adminawwards.png) -->
+### Homepage
+![neighbourhood](./static/img/hmpg.png)
+### Add Business
+![neighbourhood](./static/img/biz.png)
 
 
 ## User Story

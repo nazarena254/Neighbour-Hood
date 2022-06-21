@@ -1,30 +1,19 @@
-from hood import views
-from django.urls import path
+from django.urls import re_path as url
+from . import views
 from django.conf.urls.static import static
-from neighbour import settings
-from django.contrib.auth import views as auth_views
+from django.conf import settings
 
-urlpatterns = [
-    path('', views.Home, name="Home"),
-    path('register', views.Register, name="Register"),
-    path('login', views.Login, name="Login"),
-    path('logout', views.Logout, name="Logout"),
-    path('profile/<str:username>/settings', views.Settings, name="Settings"),
-    path('profile/<str:username>/edit', views.EditProfile, name="EditProfile"),
-    path('profile/<str:username>', views.MyProfile, name="MyProfile"),
-    path('activateuser/<uidb64>/<token>',views.ActivateAccount, name = 'ActivateAccount'),
-    path('resetpassword/',auth_views.PasswordResetView.as_view(template_name='ResetPassword.html'), name = 'reset_password'),
-    path('resetpassword/sent/',auth_views.PasswordResetDoneView.as_view(template_name='PasswordResetSent.html'), name = 'password_reset_done'),
-    path('resetpassword/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='PasswordResetConfirm.html'), name = 'password_reset_confirm'),
-    path('resetpassword/success/',auth_views.PasswordResetCompleteView.as_view(template_name='PasswordResetSuccess.html'), name = 'password_reset_complete'),
-    path('<str:username>/add/business/', views.AddBusiness, name='AddBusiness'),
-    path('<str:username>/add/neighbourhood/', views.AddNeighbourhood, name='AddNeighbourhood'),
-    path('<str:username>/neighbourhoods/', views.MyNeighbourhoods, name='MyNeighbourhoods'),
-    path('<str:username>/posts/', views.MyPosts, name='MyPosts'),
-    path('<str:username>/businesses/', views.MyBusinesses, name='MyBusinesses'),
-    path('search', views.Search, name="Search"),
-    path('<str:username>/add/post/', views.AddPost, name='AddPost'),
-    path('join/neighbourhood/<str:title>', views.JoinNeighbourhood, name="JoinNeighbourhood"),
-    path('leave/neighbourhood/<str:title>', views.LeaveNeighbourhood, name="LeaveNeighbourhood"),
-    path('neighbourhood/<str:title>/', views.SingleNeighbourhood, name='SingleNeighbourhood'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns=[
+    url(r'^$',views.home_page,name = 'home_page'),
+    url(r'^edit$', views.edit, name='edit_profile'),
+    url(r'^upload/$', views.upload_business, name='upload_business'),
+    url(r'^hood/$', views.add_hood, name='add_hood'),
+    url(r'^join(?P<neighborhood_id>\d+)',views.join, name='join'),
+    url(r'^leave/(?P<neighborhood_id>\d+)',views.leave, name='leave'),
+    url(r'^one_hood(?P<neighborhood_id>\d+)',views.hood, name='hood'),
+    url(r'^comment/(?P<post_id>\d+)', views.one_post, name='comment'),
+    url(r'^post/$', views.add_post,name='add_post'),
+    url(r'^search/', views.search_results, name='search_results'),
+]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
